@@ -1,0 +1,32 @@
+{
+  "name": "incomplete-symbol",
+  "description": "Custom-remove features of a Symbol implementation.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Steven Vachon <contact@svachon.com> (https://svachon.com)",
+  "repository": "github:stevenvachon/incomplete-symbol",
+  "main": "lib",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
+    "sinon": "^7.2.2",
+    "sinon-chai": "^3.3.0",
+    "symbol.prototype.description": "^1.0.0"
+  },
+  "engines": {
+    "node": ">= 8"
+  },
+  "scripts": {
+    "ci": "npm run test && nyc report --reporter=text-lcov | coveralls",
+    "posttest": "nyc report --reporter=text-summary --reporter=html",
+    "test": "nyc --silent mocha test.js --check-leaks --bail"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "symbol"
+  ]
+}
