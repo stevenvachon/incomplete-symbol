@@ -1,44 +1,34 @@
-# incomplete-symbol [![NPM Version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url]
+# incomplete-symbol [![NPM Version][npm-image]][npm-url] ![Build Status][ghactions-image] [![Coverage Status][codecov-image]][codecov-url]
 
-> Custom-remove features of a [`Symbol`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol) implementation.
+> Custom-remove features of a [`Symbol`](https://mdn.io/Symbol) implementation.
 
+This is useful when simulating the incomplete `Symbol` implementations available in some web browsers from 2019.
 
-This is useful when simulating the incomplete `Symbol` implementations available in some of today's modern web browsers.
+> [!NOTE]
+>
+> If you need to support older versions of Node.js (going back to `8.x`), use `1.x` of this package.
 
+## Install
 
-## Installation
-
-[Node.js](http://nodejs.org/) `>= 8` is required. To install, type this at the command line:
 ```shell
 npm install incomplete-symbol
 ```
 
-
 ## Usage
 
 ```js
-const customizeSymbol = require('incomplete-symbol');
+import customizeSymbol from 'incomplete-symbol';
 
 const exclusions = ['description', 'toStringTag'];
 const IncompleteSymbol = customizeSymbol(exclusions);
-const symbol = new IncompleteSymbol('foo');
+const symbol = IncompleteSymbol('foo');
 
 console.log(IncompleteSymbol.toStringTag); //-> undefined
 console.log(symbol.description); //-> undefined
 ```
 
-
-## Arguments
-
-### `exclusions`
-Type: `Array`  
-Default value: `[]`  
-The output `Symbol` function and any instances created with it will not expose each listed property/method.
-
-
-[npm-image]: https://img.shields.io/npm/v/incomplete-symbol.svg
+[npm-image]: https://img.shields.io/npm/v/incomplete-symbol
 [npm-url]: https://npmjs.com/package/incomplete-symbol
-[travis-image]: https://img.shields.io/travis/stevenvachon/incomplete-symbol.svg
-[travis-url]: https://travis-ci.org/stevenvachon/incomplete-symbol
-[coveralls-image]: https://img.shields.io/coveralls/stevenvachon/incomplete-symbol.svg
-[coveralls-url]: https://coveralls.io/github/stevenvachon/incomplete-symbol
+[ghactions-image]: https://img.shields.io/github/actions/workflow/status/stevenvachon/incomplete-symbol/test.yml
+[codecov-image]: https://img.shields.io/codecov/c/github/stevenvachon/incomplete-symbol
+[codecov-url]: https://app.codecov.io/github/stevenvachon/incomplete-symbol
